@@ -19,9 +19,10 @@ quietly destring, replace
 compress
 
 ** renaming variables and general clean-up
+** note: requires 'encoder' program from SSC
 ** ---------------------------------------
 gen id = _n
-rencode cond, replace
+encoder cond, replace
 rename v8 startdate
 rename v9 enddate
 rename score prac_score

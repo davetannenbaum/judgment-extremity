@@ -11,10 +11,9 @@ cd "~/Github/judgment-extremity/Study 2/"
 import delimited "study2 final data.csv", delimiter(comma) varnames(1) clear
 
 ** Encode domain variable
+** (note: requires 'encoder' program from SSC)
 ** ---------------------------------------
-encode domain, gen(newdomain)
-drop domain
-rename newdomain domain
+encoder domain, replace
 
 ** Table 1 descriptive stats (reqires 'egenmore' package)
 ** ---------------------------------------
@@ -155,10 +154,10 @@ local high = r(mean) + r(sd)
 margins, dydx(ea) at(know = (`low' `med' `high'))
 restore
 
-** Testing for Binary Complementarity 
+** Testing for Binary Complementarity
 ** ---------------------------------------
 preserve
-rencode target, replace
+encoder target, replace
 generate cond = 0 if inlist(target,1,3,5,7,9,11,13,15,17,19,21,23)
 replace cond = 1 if inlist(target,2,4,6,8,10,12,14,16,18,20,22,24)
 generate trial = .

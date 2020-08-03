@@ -68,9 +68,9 @@ bysort id: gen Focal = focala if focala != .
 bysort id: replace Focal = focalb if focalb != .
 bysort id: replace Focal = focalc if focalc != .
 drop focala focalb focalc
-rencode foil if domain == 0, gen(foila)
-rencode foil if domain == 1, gen(foilb)
-rencode foil if domain == 2, gen(foilc)
+encoder foil if domain == 0, gen(foila)
+encoder foil if domain == 1, gen(foilb)
+encoder foil if domain == 2, gen(foilc)
 bysort id: gen Foil = foila if foila != .
 bysort id: replace Foil = foilb if foilb != .
 bysort id: replace Foil = foilc if foilc != .
